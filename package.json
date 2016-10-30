@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "testing express framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codingbat/express.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "learn"
+  ],
+  "author": "Nazmul Alam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codingbat/express/issues"
+  },
+  "homepage": "https://github.com/codingbat/express#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
