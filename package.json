@@ -1,10 +1,10 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "testing express framework",
-  "main": "index.js",
+  "name": "poi",
+  "version": "1.0-SNAPSHOT",
+  "description": "Point of Interest application",
+  "main": "server.js",
   "scripts": {
-    "test": "test"
+    "poi": "poi"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,9 @@
   "keywords": [
     "express",
     "node",
-    "learn"
+    "mongo",
+    "angularjs",
+    "poi"
   ],
   "author": "Nazmul Alam",
   "license": "MIT",
