@@ -1,6 +1,6 @@
 {
   "name": "poi",
-  "version": "1.0-SNAPSHOT",
+  "version": "1.0",
   "description": "Point of Interest application",
   "main": "server.js",
   "scripts": {
@@ -24,6 +24,11 @@
   },
   "homepage": "https://github.com/codingbat/express#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.6.5",
+    "morgan": "^1.7.0"
   }
 }

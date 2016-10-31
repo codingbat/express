@@ -1,3 +1,4 @@
 /node_modules
-/express.iml
 /.idea/
+/bower_components/
+/poi.iml
