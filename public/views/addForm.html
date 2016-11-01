@@ -1,0 +1,51 @@
+<div class="col-md-5">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"><span class="glyphicon glyphicon-map-marker"></span> Add a new Point of Interest
+            <span><button ng-click="refreshLoc()" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span></h2>
+        </div>
+        <div class="panel-body">
+            <form name ="addForm" novalidate>
+                <div class="form-group">
+                    <label for="poiname">Name of the place</label>
+                    <input type="text" class="form-control" id="poiname"
+                           placeholder="IT Tralee" ng-model="formData.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control" id="phone"
+                           placeholder="066 714 5600" ng-model="formData.phone_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control"
+                           id="address" placeholder="Dromtacker, Tralee, Co Kerry"
+                           ng-model="formData.address" required>
+                </div>
+                <div class="form-group">
+                    <label for="uri">Website URL</label>
+                    <input type="text" class="form-control" id="uri"
+                           placeholder="http://www.ittralee.ie"
+                           ng-model="formData.website" required>
+                </div>
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" class="form-control" id="latitude"
+                           value="52.2866651" ng-model="formData.lat" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" class="form-control" id="longitude"
+                           value="-9.6749289" ng-model="formData.lng" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="types">POI Type</label>
+                    <input type="text" class="form-control" id="types"
+                           placeholder="education" ng-model="formData.types" required>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block"
+                        ng-click="createPOI()" ng-disabled="addForm.$invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

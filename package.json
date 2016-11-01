@@ -1,8 +1,9 @@
 {
   "name": "poi",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Point of Interest application",
   "main": "server.js",
+  "private" : true,
   "scripts": {
     "poi": "poi"
   },
@@ -30,5 +31,8 @@
     "method-override": "^2.3.6",
     "mongoose": "^4.6.5",
     "morgan": "^1.7.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   }
 }

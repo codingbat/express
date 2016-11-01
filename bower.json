@@ -2,7 +2,7 @@
   "name": "poi",
   "description": "Point of Interest application",
   "main": "server.js",
-  "version": "1.0",
+  "version": "1.0.0",
   "authors": [
     "Nazmul Alam"
   ],
@@ -27,6 +27,7 @@
     "angular-route": "^1.5.8",
     "angularjs-geolocation": "^0.1.1",
     "bootstrap": "^3.3.7",
-    "modernizer": "^2.8.2"
+    "modernizer": "^2.8.2",
+    "holderjs": "^2.9.4"
   }
 }
