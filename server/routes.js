@@ -9,11 +9,11 @@
     module.exports = function (app) {
         app.get('/locations', function (req, res) {
             var query = Location.find({});
-            query.exec(function (err, users) {
+            query.exec(function (err, locations) {
                 if (err) {
                     res.send(err);
                 } else {
-                    res.json(users);
+                    res.json(locations);
                 }
             });
         });
@@ -34,8 +34,8 @@
         app.post('/query/', function (req, res) {
 
             // Grab all of the query parameters from the body.
-            var lat = req.body.location.lat;
-            var lng = req.body.location.lng;
+            var lat = req.body.lat;
+            var lng = req.body.lng;
             var distance = req.body.distance;
             var name = req.body.name;
 
@@ -58,13 +58,13 @@
             }
 
             // Execute Query and Return the Query Results
-            query.exec(function (err, users) {
+            query.exec(function (err, locations) {
                 if (err) {
                     res.send(err);
                 }
                 else
                 {
-                    res.json(users);
+                    res.json(locations);
                 }
             });
         });

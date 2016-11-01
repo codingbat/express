@@ -1,56 +1,45 @@
 (function () {
-    angular
-        .module('locService', [])
+    angular.module('locService', [])
         .factory('locService', function ($rootScope, $http) {
             var googleMapService = {};
             googleMapService.clickLat = 0;
             googleMapService.clickLong = 0;
 
-            // Array of locations obtained from API calls
             var locations = [];
 
-            // Variables we'll use to help us pan to the right spot
             var lastMarker;
             var currentSelectedMarker;
 
+            // User Selected Location (initialize to center of America)
             var selectedLat = 52.2866651;
             var selectedLong = -9.6749289;
 
-            // Refresh the Map with new data. Takes three parameters (lat, long, and filtering results)
             googleMapService.refresh = function (latitude, longitude, filteredResults) {
+
                 locations = [];
 
-                // Set the selected lat and long equal to the ones provided on the refresh() call
                 selectedLat = latitude;
                 selectedLong = longitude;
 
-                // If filtered results are provided in the refresh() call...
                 if (filteredResults) {
 
-                    // Then convert the filtered results into map points.
                     locations = convertToMapPoints(filteredResults);
 
-                    // Then, initialize the map -- noting that a filter was used (to mark icons yellow)
                     initialize(latitude, longitude, true);
                 }
 
-                // If no filter is provided in the refresh() call...
                 else {
 
-                    // Perform an AJAX call to get all of the records in the db.
                     $http.get('/locations').success(function (response) {
 
-                        // Then convert the results into map points
                         locations = convertToMapPoints(response);
 
-                        // Then initialize the map -- noting that no filter was used.
                         initialize(latitude, longitude, false);
                     }).error(function () {
                     });
                 }
             };
 
-            // Convert a JSON of users into map points
             var convertToMapPoints = function (response) {
 
                 // Clear the locations holder
@@ -69,7 +58,7 @@
 
                     // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
                     locations.push(new Location(
-                        new google.maps.LatLng(poi.location.lat, poi.location.lng),
+                        new google.maps.LatLng(poi.location[1], poi.location[0]),
                         new google.maps.InfoWindow({
                             content: contentString,
                             maxWidth: 320,
@@ -85,7 +74,9 @@
             };
 
             // Constructor for generic location
-            var Location = function (name, phone_number, address, website) {
+            var Location = function (latlon, message, name, phone_number, address, website) {
+                this.latlon = latlon;
+                this.message = message;
                 this.name = name;
                 this.phone_number = phone_number;
                 this.address = address;
@@ -103,7 +94,7 @@
 
                     // Create a new map and place in the index.html page
                     var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 10,
+                        zoom: 3,
                         center: myLatLng,
                     });
                 }
@@ -137,7 +128,7 @@
                 var initialLocation = new google.maps.LatLng(latitude, longitude);
                 var marker = new google.maps.Marker({
                     position: initialLocation,
-                    // animation: google.maps.Animation.BOUNCE,
+                    animation: google.maps.Animation.BOUNCE,
                     map: map,
                     icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
                 });
@@ -150,7 +141,7 @@
                 google.maps.event.addListener(map, 'click', function (e) {
                     var marker = new google.maps.Marker({
                         position: e.latLng,
-                        // animation: google.maps.Animation.BOUNCE,
+                        animation: google.maps.Animation.BOUNCE,
                         map: map,
                         icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
                     });
@@ -178,3 +169,4 @@
             return googleMapService;
         });
 })();
+

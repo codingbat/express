@@ -14,7 +14,7 @@
     "angularjs",
     "poi"
   ],
-  "homepage": "https://github.com/codingbat/express",
+  "homepage": "https://github.com/codingbat/poi",
   "private": true,
   "ignore": [
     "**/.*",
@@ -27,7 +27,6 @@
     "angular-route": "^1.5.8",
     "angularjs-geolocation": "^0.1.1",
     "bootstrap": "^3.3.7",
-    "modernizer": "^2.8.2",
-    "holderjs": "^2.9.4"
+    "modernizr": "^3.3.1"
   }
 }

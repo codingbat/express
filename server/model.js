@@ -4,16 +4,9 @@
 
     var PoiSchema = new Schema({
         location: {
-            lat: {
-                type: Number,
-                required: true
-            },
-            lng: {
-                type: Number,
-                required: true
-            }
+            type: [Number],
+            required: true
         },
-        accuracy: Number,
         name: {
             type: String,
             required: true
@@ -32,8 +25,7 @@
             type: Date,
             default: Date.now
         },
-        website: String,
-        language: String
+        website: String
     });
 
     PoiSchema.pre('save', function (next) {

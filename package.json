@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codingbat/express.git"
+    "url": "git+https://github.com/codingbat/poi.git"
   },
   "keywords": [
-    "express",
+    "poi",
     "node",
     "mongo",
     "angularjs",
@@ -21,9 +21,9 @@
   "author": "Nazmul Alam",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codingbat/express/issues"
+    "url": "https://github.com/codingbat/poi/issues"
   },
-  "homepage": "https://github.com/codingbat/express#readme",
+  "homepage": "https://github.com/codingbat/poi#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",

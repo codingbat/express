@@ -16,16 +16,16 @@
                 .then(function (data) {
                     coords = {lat: data.coords.latitude, long: data.coords.longitude};
 
-                    $scope.formData.lng = parseFloat(coords.long).toFixed(7);
-                    $scope.formData.lat = parseFloat(coords.lat).toFixed(7);
+                    $scope.formData.lng = parseFloat(coords.long).toFixed(3);
+                    $scope.formData.lat = parseFloat(coords.lat).toFixed(3);
 
-                    locService.refresh($scope.formData.location.lat, $scope.formData.location.lng);
+                    locService.refresh($scope.formData.lat, $scope.formData.lng);
                 });
 
             $rootScope.$on('clicked', function () {
                 $scope.$apply(function () {
-                    $scope.formData.lat = parseFloat(locService.clickLat).toFixed(7);
-                    $scope.formData.lng = parseFloat(locService.clickLong).toFixed(7);
+                    $scope.formData.lat = parseFloat(locService.clickLat).toFixed(3);
+                    $scope.formData.lng = parseFloat(locService.clickLong).toFixed(3);
                 });
             });
 
@@ -34,8 +34,8 @@
                     .then(function (data) {
                         coords = {lat: data.coords.latitude, long: data.coords.longitude};
 
-                        $scope.formData.lat = parseFloat(coords.long).toFixed(7);
-                        $scope.formData.lng = parseFloat(coords.lat).toFixed(7);
+                        $scope.formData.lat = parseFloat(coords.long).toFixed(3);
+                        $scope.formData.lng = parseFloat(coords.lat).toFixed(3);
                         locService.refresh(coords.lat, coords.long);
                     });
             };
@@ -46,10 +46,7 @@
                     phone_number: $scope.formData.phone_number,
                     address: $scope.formData.address,
                     website: $scope.formData.website,
-                    location: {
-                        lat: $scope.formData.lat,
-                        lng: $scope.formData.lng
-                    },
+                    location: [$scope.formData.lng, $scope.formData.lat],
                     types: [$scope.formData.types],
                 };
 
