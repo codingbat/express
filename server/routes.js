@@ -33,22 +33,18 @@
 
         app.post('/query/', function (req, res) {
 
-            // Grab all of the query parameters from the body.
             var lat = req.body.lat;
             var lng = req.body.lng;
             var distance = req.body.distance;
             var name = req.body.name;
+            var type = req.body.type;
 
-            // Opens a generic Mongoose Query. Depending on the post body we will...
             var query = Location.find({});
 
-            // ...include filter by Max Distance (converting miles to meters)
             if (distance) {
-
-                // Using MongoDB's geospatial querying features. (Note how coordinates are set [long, lat]
                 query = query.where('location').near({
                     center: {type: 'Point', coordinates: [lng, lat]},
-                    maxDistance: distance * 1609.34, spherical: true,
+                    maxDistance: distance, spherical: true,
                 });
 
             }
@@ -57,7 +53,10 @@
                 query = query.where('name').equals(name);
             }
 
-            // Execute Query and Return the Query Results
+            if (type) {
+                query = query.where('type').equals(type);
+            }
+
             query.exec(function (err, locations) {
                 if (err) {
                     res.send(err);
