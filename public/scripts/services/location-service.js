@@ -1,9 +1,9 @@
 (function () {
     angular.module('locService', [])
         .factory('locService', function ($rootScope, $http) {
-            var googleMapService = {};
-            googleMapService.clickLat = 0;
-            googleMapService.clickLong = 0;
+            var gMapApi = {};
+            gMapApi.clickLat = 0;
+            gMapApi.clickLong = 0;
 
             var locations = [];
 
@@ -13,7 +13,7 @@
             var selectedLat = 52.2866651;
             var selectedLong = -9.6749289;
 
-            googleMapService.refresh = function (latitude, longitude, filteredResults) {
+            gMapApi.refresh = function (latitude, longitude, filteredResults) {
 
                 locations = [];
 
@@ -22,11 +22,11 @@
 
                 if (filteredResults) {
                     locations = convertToMapPoints(filteredResults);
-                    initialize(latitude, longitude, true);
+                    initMap(latitude, longitude, true);
                 } else {
                     $http.get('/locations').success(function (response) {
                         locations = convertToMapPoints(response);
-                        initialize(latitude, longitude, false);
+                        initMap(latitude, longitude, false);
                     }).error(function () {
                     });
                 }
@@ -54,7 +54,7 @@
                         new google.maps.LatLng(poi.location[1], poi.location[0]),
                         new google.maps.InfoWindow({
                             content: contentString,
-                            maxWidth: 320,
+                            maxWidth: 420,
                         }),
                         poi.name,
                         poi.phone_number,
@@ -74,7 +74,7 @@
                 this.website = website;
             };
 
-            var initialize = function (latitude, longitude, filter) {
+            var initMap = function (latitude, longitude, filter) {
                 var myLatLng = {lat: selectedLat, lng: selectedLong};
                 if (!map) {
                     var map = new google.maps.Map(document.getElementById('map'), {
@@ -125,16 +125,16 @@
 
                     lastMarker = marker;
                     map.panTo(marker.position);
-                    googleMapService.clickLat = marker.getPosition().lat();
-                    googleMapService.clickLong = marker.getPosition().lng();
+                    gMapApi.clickLat = marker.getPosition().lat();
+                    gMapApi.clickLong = marker.getPosition().lng();
                     $rootScope.$broadcast('clicked');
                 });
             };
 
             google.maps.event.addDomListener(window, 'load',
-                googleMapService.refresh(selectedLat, selectedLong));
+                gMapApi.refresh(selectedLat, selectedLong));
 
-            return googleMapService;
+            return gMapApi;
         });
 })();
 

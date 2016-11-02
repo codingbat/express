@@ -30,9 +30,9 @@
 
         app.post('/query/', function (req, res) {
 
-            var lat = req.body.lat;
-            var lng = req.body.lng;
-            var distance = req.body.distance;
+            var lat = parseFloat(req.body.lat);
+            var lng = parseFloat(req.body.lng);
+            var distance = parseFloat(req.body.distance);
             var name = req.body.name;
             var type = req.body.type;
 
@@ -41,7 +41,7 @@
             if (distance) {
                 query = query.where('location').near({
                     center: {type: 'Point', coordinates: [lng, lat]},
-                    maxDistance: distance, spherical: true,
+                    maxDistance: distance * 1000, spherical: true,
                 });
 
             }
