@@ -1,7 +1,4 @@
 (function () {
-
-    'use strict';
-
     var mongoose = require('mongoose');
     var Location = require('./model.js');
 

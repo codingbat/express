@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "581939b8df4cc53329985127",
+    "name": "IT Tralee",
+    "phone_number": "066 714 5600",
+    "address": "Tralee, Co Kerry",
+    "website": "http://www.ittralee.ie",
+    "location": [
+      -9.6734257,
+      52.2859074
+    ],
+    "__v": 0,
+    "updated_at": "2016-11-02T00:56:24.567Z",
+    "created_at": "2016-11-02T00:56:24.544Z",
+    "types": [
+      "education"
+    ]
+  }
+]
