@@ -20,7 +20,6 @@
             $scope.deletePoi = function (index, id) {
                 $http.delete('/locations/' + id)
                     .then(function () {
-                        refreshLoc();
                         removeFromList(index);
                         console.log('deleted');
 
@@ -32,16 +31,5 @@
             function removeFromList(index) {
                 $scope.locations.splice(index, 1);
             }
-
-            function refreshLoc() {
-                geolocation.getLocation()
-                    .then(function (data) {
-                        coords = {lat: data.coords.latitude, long: data.coords.longitude};
-
-                        $scope.formData.lat = parseFloat(coords.long).toFixed(7);
-                        $scope.formData.lng = parseFloat(coords.lat).toFixed(7);
-                        locService.refresh(coords.lat, coords.long);
-                    });
-            };
         });
 })();

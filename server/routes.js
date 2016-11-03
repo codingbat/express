@@ -21,11 +21,24 @@
                 if (err) {
                     res.send(err);
                 }
-                else
-                {
+                else {
                     res.json(req.body);
                 }
             });
+        });
+
+        app.put('/locations/:objID', function (req, res) {
+            var objID = req.params.objID;
+            var updateLoc = req.body;
+
+            Location.update({"_id": objID}, updateLoc,
+                function (err, numberAffected) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log("Updated %d point of interest.", numberAffected.n);
+                    return res.json(req.body);
+                });
         });
 
         app.post('/query/', function (req, res) {
@@ -58,8 +71,7 @@
                 if (err) {
                     res.send(err);
                 }
-                else
-                {
+                else {
                     res.json(locations);
                 }
             });
@@ -75,6 +87,27 @@
                 }
                 else {
                     res.json(req.body);
+                }
+            });
+        });
+
+        app.get('/reduced_types', function (req, res) {
+            var obj = {};
+
+            obj.map = function () {
+                emit(this.type, 1);
+            };
+
+            obj.reduce = function (k, vals) {
+                return vals.length
+            };
+
+            Location.mapReduce(obj, function (err, reduced) {
+                if (err) {
+                    res.send(err);
+                }
+                else {
+                    res.json(reduced);
                 }
             });
         });

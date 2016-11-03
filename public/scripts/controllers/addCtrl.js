@@ -45,7 +45,7 @@
                     address: $scope.formData.address,
                     website: $scope.formData.website,
                     location: [$scope.formData.lng, $scope.formData.lat],
-                    types: [$scope.formData.types],
+                    type: $scope.formData.type,
                 };
 
                 $http.post('/locations', poiData)
@@ -54,7 +54,7 @@
                         $scope.formData.name = '';
                         $scope.formData.address = '';
                         $scope.formData.website = '';
-                        $scope.formData.types = '';
+                        $scope.formData.type = '';
                         $scope.formData.phone_number = '';
                     })
                     .error(function (data) {

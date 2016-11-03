@@ -1,16 +1,14 @@
 <div class="col-md-5">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2><span class="glyphicon glyphicon-map-marker"></span> Update a POI</h2>
+            <h2><span class="glyphicon glyphicon-map-marker"></span> Reduced POI Types
         </div>
         <div class="panel-body">
             <div class="col-md-12">
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="poi in locations">
-                        <button type="submit" class="btn btn-info pull-right"
-                                ng-click="updatePoi($index, poi._id)">Edit</button>
-                        <strong>Place:</strong> {{poi.name}}<br>
-                        <strong>Address:</strong> {{poi.address}}
+                        <span class="badge">{{poi.value}}</span>
+                        <strong>Type:</strong> {{poi._id}}<br>
                     </li>
                 </ul>
             </div>

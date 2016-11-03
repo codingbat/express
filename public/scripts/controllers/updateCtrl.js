@@ -16,5 +16,9 @@
                     console.log('could not retrieve locations in update', err);
                 });
             }
+
+            $scope.updatePoi = function(index, id) {
+                console.log('updated ', index, id);
+            }
         });
 })();

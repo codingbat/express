@@ -6,10 +6,11 @@
             'navCtrl',
             'updateCtrl',
             'deleteCtrl',
+            'mapReduce',
             'geolocation',
             'locService',
             'ngRoute',
-            'PoiService'
+            'PoiService',
         ])
         .config(function ($routeProvider) {
             $routeProvider.when('/create', {
@@ -27,6 +28,10 @@
             }).when('/delete', {
                 controller: 'deleteCtrl',
                 templateUrl: 'views/delete.html',
+
+            }).when('/reduce', {
+                controller: 'mapReduceCtrl',
+                templateUrl: 'views/mapReduce.html',
 
             }).otherwise({redirectTo: '/create'})
         });

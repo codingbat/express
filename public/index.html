@@ -23,6 +23,7 @@
     <script src="scripts/controllers/updateCtrl.js"></script>
     <script src="scripts/controllers/deleteCtrl.js"></script>
     <script src="scripts/services/poi-service.js"></script>
+    <script src="scripts/controllers/mapReduceCtrl.js"></script>
 </head>
 <body ng-app="poiApp">
 <!--[if lt IE 10]>
@@ -37,6 +38,7 @@
             <li ng-class="{ active: isActive('/retrieve')}"><a href="/#/retrieve">Retrieve</a></li>
             <li ng-class="{ active: isActive('/update')}"><a href="/#/update">Update</a></li>
             <li ng-class="{ active: isActive('/delete')}"><a href="/#/delete">Delete</a></li>
+            <li ng-class="{ active: isActive('/reduce')}"><a href="/#/reduce">MapReduce</a></li>
         </ul>
         <h3 class="text-muted">Point of Interest</h3>
     </div>
