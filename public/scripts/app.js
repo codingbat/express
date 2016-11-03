@@ -4,19 +4,30 @@
             'addCtrl',
             'queryCtrl',
             'navCtrl',
+            'updateCtrl',
+            'deleteCtrl',
             'geolocation',
             'locService',
-            'ngRoute'
+            'ngRoute',
+            'PoiService'
         ])
         .config(function ($routeProvider) {
-            $routeProvider.when('/add', {
+            $routeProvider.when('/create', {
                 controller: 'addCtrl',
                 templateUrl: 'views/addForm.html',
 
-            }).when('/find', {
+            }).when('/retrieve', {
                 controller: 'queryCtrl',
                 templateUrl: 'views/queryForm.html',
 
-            }).otherwise({redirectTo: '/add'})
+            }).when('/update', {
+                controller: 'updateCtrl',
+                templateUrl: 'views/updateForm.html',
+
+            }).when('/delete', {
+                controller: 'deleteCtrl',
+                templateUrl: 'views/delete.html',
+
+            }).otherwise({redirectTo: '/create'})
         });
 })();

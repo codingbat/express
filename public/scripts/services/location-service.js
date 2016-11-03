@@ -42,13 +42,7 @@
                         '<p><b>Place</b>: ' + poi.name + '<br>' +
                         '<b>Phone</b>: ' + poi.phone_number + '<br>' +
                         '<b>Address</b>: ' + poi.address + '<br>' +
-                        '<b>Web</b>: <a href="' + poi.website + '"</a>' + poi.website + '</p>' +
-                        '<div>' +
-                            '<a href ng-click="edit()">' +
-                            '<span class="label label-info">Edit</span></a>' +
-                            '<a href ng-click="$scope.delete()">' +
-                            '<span class="label label-danger">Delete</span></a>' +
-                        '</div>';
+                        '<b>Web</b>: <a href="' + poi.website + '"</a>' + poi.website + '</p>';
 
                     locations.push(new Location(
                         new google.maps.LatLng(poi.location[1], poi.location[0]),

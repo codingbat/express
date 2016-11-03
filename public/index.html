@@ -20,6 +20,9 @@
     <script src="scripts/controllers/addCtrl.js"></script>
     <script src="scripts/controllers/queryCtrl.js"></script>
     <script src="scripts/controllers/navCtrl.js"></script>
+    <script src="scripts/controllers/updateCtrl.js"></script>
+    <script src="scripts/controllers/deleteCtrl.js"></script>
+    <script src="scripts/services/poi-service.js"></script>
 </head>
 <body ng-app="poiApp">
 <!--[if lt IE 10]>
@@ -30,8 +33,10 @@
 <div class="container">
     <div class="header" ng-controller="navCtrl">
         <ul class="nav nav-pills pull-right">
-            <li ng-class="{ active: isActive('/add')}"><a href="/#/add">Add POI</a></li>
-            <li ng-class="{ active: isActive('/find')}"><a href="/#/find">Find POI</a></li>
+            <li ng-class="{ active: isActive('/create')}"><a href="/#/create">Create</a></li>
+            <li ng-class="{ active: isActive('/retrieve')}"><a href="/#/retrieve">Retrieve</a></li>
+            <li ng-class="{ active: isActive('/update')}"><a href="/#/update">Update</a></li>
+            <li ng-class="{ active: isActive('/delete')}"><a href="/#/delete">Delete</a></li>
         </ul>
         <h3 class="text-muted">Point of Interest</h3>
     </div>

@@ -1,0 +1,19 @@
+<div class="col-md-5">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2><span class="glyphicon glyphicon-map-marker"></span> Delete a POI
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="poi in locations">
+                        <span class="badge"><a href ng-click="deletePoi($index, poi._id)">Delete</a></span>
+                        <strong>Place:</strong> {{poi.name}}<br>
+                        <strong>Address:</strong> {{poi.address}}
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

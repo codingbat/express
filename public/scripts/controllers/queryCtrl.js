@@ -8,7 +8,7 @@
             function ($scope, $log, $http, $rootScope, geolocation, locService) {
 
                 $scope.formData = {};
-                var queryBody = {};
+                var searchLoc = {};
 
                 geolocation.getLocation().then(function (data) {
                     coords = {lat: data.coords.latitude, long: data.coords.longitude};
@@ -26,20 +26,20 @@
 
                 $scope.queryLocations = function () {
 
-                    queryBody = {
+                    searchLoc = {
                         lng: parseFloat($scope.formData.lng),
                         lat: parseFloat($scope.formData.lat),
                         distance: parseFloat($scope.formData.distance),
                         name: $scope.formData.name,
                     };
 
-                    $http.post('/query', queryBody)
-                        .success(function (queryResults) {
-                            locService.refresh(queryBody.lat, queryBody.lng, queryResults);
-                            $scope.queryCount = queryResults.length;
+                    $http.post('/query', searchLoc)
+                        .success(function (response) {
+                            locService.refresh(searchLoc.lat, searchLoc.lng, response);
+                            $scope.queryCount = response.length;
                         })
-                        .error(function (queryResults) {
-                            console.log('Error ' + queryResults);
+                        .error(function (err) {
+                            console.log('Error querying locations ' + err);
                         })
                 };
             });
