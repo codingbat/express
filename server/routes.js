@@ -86,7 +86,7 @@
                     res.send(err);
                 }
                 else {
-                    res.json(req.body);
+                    res.json(loc);
                 }
             });
         });
