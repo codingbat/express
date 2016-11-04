@@ -11,6 +11,9 @@
             'locService',
             'ngRoute',
             'PoiService',
+            'ngTouch',
+            'ui.bootstrap',
+            'ngAnimate'
         ])
         .config(function ($routeProvider) {
             $routeProvider.when('/create', {

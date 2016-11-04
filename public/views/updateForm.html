@@ -1,19 +1,58 @@
 <div class="col-md-5">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2><span class="glyphicon glyphicon-map-marker"></span> Update a POI</h2>
+            <h2><span class="glyphicon glyphicon-map-marker"></span> Update POI</h2>
         </div>
         <div class="panel-body">
-            <div class="col-md-12">
-                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="poi in locations">
-                        <button type="submit" class="btn btn-info pull-right"
-                                ng-click="updatePoi($index, poi._id)">Edit</button>
-                        <strong>Place:</strong> {{poi.name}}<br>
-                        <strong>Address:</strong> {{poi.address}}
-                    </li>
-                </ul>
-            </div>
+            <uib-accordion close-others="oneAtATime">
+                <div uib-accordion-group class="panel-default" is-open="status.open" ng-repeat="poi in locations">
+                    <uib-accordion-heading>
+                        {{poi.name}} <i class="pull-right glyphicon"
+                                        ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+
+                    <form name ="updateForm" novalidate>
+                        <div class="form-group">
+                            <label for="poiname">Name of the place</label>
+                            <input type="text" class="form-control" id="poiname"
+                                   ng-model="formData[$index].name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" class="form-control" id="phone"
+                                   ng-model="formData[$index].phone_number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address"
+                                   ng-model="formData[$index].address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="uri">Website URL</label>
+                            <input type="text" class="form-control" id="uri"
+                                   ng-model="formData[$index].website" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="latitude">Latitude</label>
+                            <input type="text" class="form-control" id="latitude"
+                                   ng-model="formData[$index].location[1]" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="longitude">Longitude</label>
+                            <input type="text" class="form-control" id="longitude"
+                                   ng-model="formData[$index].location[0]" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">POI Type</label>
+                            <input type="text" class="form-control" id="type"
+                                   ng-model="formData[$index].type" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-block"
+                                ng-click="updatePoi($index, poi._id)"
+                                ng-disabled="updateForm.$invalid">Update</button>
+                    </form>
+                </div>
+            </uib-accordion>
         </div>
     </div>
 </div>

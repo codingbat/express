@@ -27,6 +27,9 @@
     "angular-route": "^1.5.8",
     "angularjs-geolocation": "^0.1.1",
     "bootstrap": "^3.3.7",
-    "modernizr": "^3.3.1"
+    "modernizr": "^3.3.1",
+    "angular-bootstrap": "^2.2.0",
+    "angular-animate": "^1.5.8",
+    "angular-touch": "^1.5.8"
   }
 }
