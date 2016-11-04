@@ -31,6 +31,7 @@
                         lat: parseFloat($scope.formData.lat),
                         distance: parseFloat($scope.formData.distance),
                         name: $scope.formData.name,
+                        type: $scope.formData.type,
                     };
 
                     $http.post('/query', searchLoc)
